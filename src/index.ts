@@ -10,7 +10,11 @@ app.listen(PORT, () => {
   console.log(`now listening on port ${PORT}`)
 })
 
-app.use(cors())
+app.use(cors({
+  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+  origin: true,
+  credentials: true,
+}))
 
 process.once('SIGUSR2', () => {
   process.kill(process.pid, 'SIGUSR2')
